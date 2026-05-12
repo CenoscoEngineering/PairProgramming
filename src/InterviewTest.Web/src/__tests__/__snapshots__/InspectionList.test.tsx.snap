@@ -1,0 +1,114 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InspectionList > matches snapshot 1`] = `
+<div>
+  <div
+    style="padding: 20px;"
+  >
+    <h1
+      style="margin-bottom: 10px;"
+    >
+      Inspection List
+    </h1>
+    <div
+      style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; align-items: center;"
+    >
+      <input
+        placeholder="Search by segment, pipeline, or inspector..."
+        style="padding: 6px 12px; border: 1px solid rgb(204, 204, 204); border-radius: 4px; min-width: 260px;"
+        type="text"
+        value=""
+      />
+      <select
+        style="padding: 6px 12px; border: 1px solid rgb(204, 204, 204); border-radius: 4px;"
+      >
+        <option
+          value=""
+        >
+          All Types
+        </option>
+      </select>
+      <select
+        style="padding: 6px 12px; border: 1px solid rgb(204, 204, 204); border-radius: 4px;"
+      >
+        <option
+          value=""
+        >
+          All Statuses
+        </option>
+      </select>
+      <button
+        style="padding: 6px 12px; border: 1px solid rgb(204, 204, 204); border-radius: 4px; cursor: pointer;"
+      >
+        Sort by Date 
+        ↑
+      </button>
+      <span
+        style="margin-left: auto; color: rgb(102, 102, 102);"
+      >
+        Showing 
+        0
+         of 
+        0
+         inspections
+      </span>
+    </div>
+    <table
+      style="width: 100%; border-collapse: collapse; margin-top: 10px;"
+    >
+      <thead>
+        <tr
+          style="background-color: rgb(224, 224, 224);"
+        >
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            ID
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Segment
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Pipeline
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Date
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Type
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Status
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Inspector
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Anomalies
+          </th>
+          <th
+            style="padding: 8px; text-align: left;"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</div>
+`;
