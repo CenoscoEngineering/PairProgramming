@@ -9,21 +9,24 @@ namespace InterviewTest.Api.Controllers;
 [ApiController]
 public class InspectionsController : ControllerBase
 {
+    private readonly AppDbContext _context;
+
+    public InspectionsController(AppDbContext context)
+    {
+        _context = context;
+    }
+
     [HttpGet]
     public IActionResult GetAll(string? inspectionType, string? status, DateTime? fromDate, DateTime? toDate)
     {
-        var context = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>()
-            .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=InterviewTestDb;Trusted_Connection=True;")
-            .Options);
-
-        var inspections = context.Inspections.ToList();
+        var inspections = _context.Inspections.ToList();
 
         foreach (var inspection in inspections)
         {
-            inspection.PipeSegment = context.PipeSegments.FirstOrDefault(s => s.Id == inspection.PipeSegmentId)!;
+            inspection.PipeSegment = _context.PipeSegments.FirstOrDefault(s => s.Id == inspection.PipeSegmentId)!;
             if (inspection.PipeSegment != null)
             {
-                inspection.PipeSegment.Pipeline = context.Pipelines
+                inspection.PipeSegment.Pipeline = _context.Pipelines
                     .FirstOrDefault(p => p.Id == inspection.PipeSegment.PipelineId)!;
             }
         }
@@ -54,18 +57,14 @@ public class InspectionsController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var context = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>()
-            .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=InterviewTestDb;Trusted_Connection=True;")
-            .Options);
-
-        var inspection = context.Inspections.FirstOrDefault(i => i.Id == id);
+        var inspection = _context.Inspections.FirstOrDefault(i => i.Id == id);
 
         if (inspection != null)
         {
-            inspection.PipeSegment = context.PipeSegments.FirstOrDefault(s => s.Id == inspection.PipeSegmentId)!;
+            inspection.PipeSegment = _context.PipeSegments.FirstOrDefault(s => s.Id == inspection.PipeSegmentId)!;
             if (inspection.PipeSegment != null)
             {
-                inspection.PipeSegment.Pipeline = context.Pipelines
+                inspection.PipeSegment.Pipeline = _context.Pipelines
                     .FirstOrDefault(p => p.Id == inspection.PipeSegment.PipelineId)!;
             }
         }

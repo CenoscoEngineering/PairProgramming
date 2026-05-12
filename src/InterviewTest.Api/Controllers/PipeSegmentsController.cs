@@ -11,11 +11,9 @@ public class PipeSegmentsController : ControllerBase
 {
     private readonly AppDbContext _context;
 
-    public PipeSegmentsController()
+    public PipeSegmentsController(AppDbContext context)
     {
-        _context = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>()
-            .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=InterviewTestDb;Trusted_Connection=True;")
-            .Options);
+        _context = context;
     }
 
     [HttpGet]
@@ -26,7 +24,7 @@ public class PipeSegmentsController : ControllerBase
         if (!string.IsNullOrEmpty(searchTerm))
         {
             segments = _context.PipeSegments
-                .FromSqlRaw($"SELECT * FROM PipeSegments WHERE SegmentName LIKE '%{searchTerm}%'")
+                .Where(s => s.SegmentName.Contains(searchTerm))
                 .ToList();
         }
         else

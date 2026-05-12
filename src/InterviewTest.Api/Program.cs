@@ -19,9 +19,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "Pipeline Integrity Management API", Version = "v1" });
 });
 
-// Database
+// Database (In-Memory for cross-platform compatibility)
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseInMemoryDatabase("InterviewTestDb"));
 
 // Repositories
 builder.Services.AddScoped<IPipelineRepository, PipelineRepository>();
