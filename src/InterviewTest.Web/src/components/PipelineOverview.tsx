@@ -12,12 +12,7 @@ import React from 'react';
  * 6. Clicking a pipeline row/card could navigate to detail (bonus)
  *
  * The API service is already set up in '../services/api' with a getPipelines() function.
- *
- * Tips:
- * - Use proper React patterns (hooks, error boundaries, loading states)
- * - Consider using the api service rather than raw fetch
- * - Use TypeScript types from '../types'
- * - Handle edge cases (empty list, network error)
+
  */
 
 const PipelineOverview: React.FC = () => {
